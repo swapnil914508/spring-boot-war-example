@@ -14,11 +14,11 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Deploy to test env') {
+        stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat_server', path: '', url: 'http://65.0.139.27:8080/')], contextPath: '/app', war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'Tomcat9-server', path: '', url: 'http://13.235.75.178:8080')], contextPath: '/app', war: '**/*.war'
             }
-        }
+        }    
     }
 }
 
