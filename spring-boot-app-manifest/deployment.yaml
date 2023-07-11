@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: sudhakarbastawade/ultimate-cicd:2
+        image: sudhakarbastawade/argo-cd:replaceImageTag        
         ports:
         - containerPort: 8080
