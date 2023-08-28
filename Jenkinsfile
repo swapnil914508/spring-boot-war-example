@@ -25,6 +25,11 @@ pipeline {
             }
         }    
     }
+	post {
+          success {
+             mail to: devops.classes.online@gmail.com, subject: ‘The Pipeline success :(‘
+    }
+  }
 }
 
 
