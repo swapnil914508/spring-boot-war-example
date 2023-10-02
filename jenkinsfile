@@ -11,9 +11,23 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sudhakarbastawade2303/spring-boot-war-example.git']])
             }
         }
+        stage('Run Tests') {
+            parallel {
+                stage('sonar-scan') {
+                    steps {
+                        echo "sonar-scan-done"
+                    }    
+                }
+                stage('unit-test') {
+                    steps {
+                        echo "running unit test"
+                    }
+                }
+            }           
+        }
         stage('building-source-code') {
             steps {
-                sh 'mvn clean package'
+                  sh 'mvn clean package'
             }
         }
         stage('deploy-to-tomcat') {
